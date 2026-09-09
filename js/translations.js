@@ -21,10 +21,10 @@ const translations = {
     heroKhmerName: "ពៀក ប្រុសម៉ៅ",
     heroStatus: "Available for Projects & Freelance",
     heroRoles: [
-      "Computer Science Student (ITC GIC)",
-      "Full-Stack Web Developer",
-      "Content Creator & Video Director",
-      "Printing & Media Specialist"
+      " Computer Science Student (ITC GIC)",
+      " Full-Stack Web Developer",
+      " Content Creator & Video Director",
+      " Printing & Media Specialist"
     ],
     heroBio: "Passionate tech creator and 2nd Year Computer Science student at the Institute of Technology of Cambodia (ITC - GIC). Blending software engineering, web craftsmanship, dynamic video storytelling, and design into tangible digital solutions.",
     heroCtaContact: "Contact Me",
