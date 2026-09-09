@@ -26,6 +26,32 @@ export const App = () => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
+  // ─── Global Scroll Reveal ───────────────────────────────────────────────────
+  // Runs after every route change so every page's .reveal elements animate in.
+  useEffect(() => {
+    // Small delay so the DOM has painted the new page before we observe
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
+      );
+
+      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+      return () => observer.disconnect();
+    }, 60); // 60ms gives React time to render the new page
+
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
+  // ────────────────────────────────────────────────────────────────────────────
+
   const handleCopy = (text) => {
     if (navigator.clipboard) {
       navigator.clipboard.writeText(text).then(() => {
@@ -57,14 +83,14 @@ export const App = () => {
       {/* Main Page Routing */}
       <main className="main-content">
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage onCopy={handleCopy} />} />
-          <Route path="/education" element={<EducationPage />} />
-          <Route path="/skills" element={<SkillsPage />} />
-          <Route path="/experience" element={<ExperiencePage />} />
+          <Route path="/"             element={<HomePage />} />
+          <Route path="/about"        element={<AboutPage onCopy={handleCopy} />} />
+          <Route path="/education"    element={<EducationPage />} />
+          <Route path="/skills"       element={<SkillsPage />} />
+          <Route path="/experience"   element={<ExperiencePage />} />
           <Route path="/achievements" element={<AchievementsPage />} />
-          <Route path="/contact" element={<ContactPage onCopy={handleCopy} />} />
-          <Route path="*" element={<MaintenancePage pageTitle="Page" />} />
+          <Route path="/contact"      element={<ContactPage onCopy={handleCopy} />} />
+          <Route path="*"             element={<MaintenancePage pageTitle="Page" />} />
         </Routes>
       </main>
 

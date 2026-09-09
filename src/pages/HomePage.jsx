@@ -2,82 +2,71 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../context/LanguageContext';
 import { TechIcon } from '../components/TechIcon';
-import { 
-  Send, 
-  ArrowRight, 
-  Mail, 
-  GraduationCap, 
-  Award, 
-  Flame, 
-  FolderGit2, 
-  Sparkles
+import {
+  Send, ArrowRight, Mail, GraduationCap,
+  Award, Flame, FolderGit2, Sparkles, Code2, Video, Trophy
 } from 'lucide-react';
 
 export const HomePage = () => {
   const { t } = useLanguage();
 
-  // Typewriter effect
-  const [roleIndex, setRoleIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
+  // Typewriter
+  const [roleIndex,  setRoleIndex]  = useState(0);
+  const [charIndex,  setCharIndex]  = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
     const roles = t.heroRoles;
-    const currentRole = roles[roleIndex % roles.length];
-
+    const current = roles[roleIndex % roles.length];
     let timer;
+
     if (isDeleting) {
-      if (charIndex > 0) {
-        timer = setTimeout(() => setCharIndex((c) => c - 1), 40);
-      } else {
-        setIsDeleting(false);
-        setRoleIndex((r) => r + 1);
-      }
+      timer = charIndex > 0
+        ? setTimeout(() => setCharIndex((c) => c - 1), 38)
+        : setTimeout(() => { setIsDeleting(false); setRoleIndex((r) => r + 1); }, 200);
     } else {
-      if (charIndex < currentRole.length) {
-        timer = setTimeout(() => setCharIndex((c) => c + 1), 75);
-      } else {
-        timer = setTimeout(() => setIsDeleting(true), 2200);
-      }
+      timer = charIndex < current.length
+        ? setTimeout(() => setCharIndex((c) => c + 1), 72)
+        : setTimeout(() => setIsDeleting(true), 2400);
     }
 
     return () => clearTimeout(timer);
   }, [charIndex, isDeleting, roleIndex, t.heroRoles]);
 
-  const currentRole = t.heroRoles[roleIndex % t.heroRoles.length];
-  const displayedText = currentRole.substring(0, charIndex);
+  const displayedText = t.heroRoles[roleIndex % t.heroRoles.length].substring(0, charIndex);
 
   return (
     <div className="home-page-wrap">
-      {/* ================= HERO SECTION ================= */}
+
+      {/* ═══════════════ HERO ═══════════════ */}
       <section className="hero-section" id="hero">
         <div className="container hero-grid">
+
           {/* Left Content */}
-          <div className="hero-content-col">
-            {/* Status Pulse Badge */}
+          <div className="hero-content-col reveal">
+
+            {/* Availability Badge */}
             <div className="hero-badge-wrap">
-              <span className="badge-pulse"></span>
+              <span className="badge-pulse" />
               <span>{t.heroStatus}</span>
             </div>
 
             <p className="hero-greeting">{t.heroGreeting}</p>
-
-            {/* Dynamic Name (PEAK BROSMAO in EN, ពៀក ប្រុសម៉ៅ in KM) */}
             <h1 className="hero-name">{t.heroName}</h1>
 
-            {/* Dynamic Typewriter */}
+            {/* Typewriter */}
             <div className="hero-typewriter-box">
               <span>{t.heroImA}</span>
               <span className="typewriter-text">{displayedText}</span>
-              <span className="typewriter-cursor"></span>
+              <span className="typewriter-cursor" />
             </div>
 
             <p className="hero-bio">{t.heroBio}</p>
 
             {/* CTA Buttons */}
             <div className="hero-cta-group">
-              <Link to="/contact" className="btn-primary">
-                <Send size={18} />
+              <Link to="/contact" className="btn-primary" id="hero-contact-btn">
+                <Send size={17} />
                 <span>{t.heroCtaContact}</span>
               </Link>
 
@@ -86,87 +75,54 @@ export const HomePage = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-telegram"
+                id="hero-telegram-btn"
               >
-                <TechIcon name="telegram" size={18} />
+                <TechIcon name="telegram" size={17} />
                 <span>{t.heroCtaTelegram}</span>
               </a>
 
-              <Link to="/experience" className="btn-outline">
+              <Link to="/experience" className="btn-outline" id="hero-portfolio-btn">
                 <span>{t.heroCtaCv}</span>
-                <ArrowRight size={17} />
+                <ArrowRight size={16} />
               </Link>
             </div>
 
-            {/* Verified Social Media Pills */}
+            {/* Social Pills */}
             <div className="hero-social-pills">
-              <a
-                href="https://t.me/peak_brosmao"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-pill"
-                title="Telegram (@peak_brosmao)"
-              >
-                <TechIcon name="telegram" size={19} />
+              <a href="https://t.me/peak_brosmao" target="_blank" rel="noopener noreferrer"
+                 className="social-pill" title="Telegram (@peak_brosmao)">
+                <TechIcon name="telegram" size={18} />
               </a>
-
-              <a
-                href="https://www.facebook.com/peakbrosmao"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-pill"
-                title="Facebook (/peakbrosmao)"
-              >
-                <TechIcon name="facebook" size={19} />
+              <a href="https://www.facebook.com/peakbrosmao" target="_blank" rel="noopener noreferrer"
+                 className="social-pill" title="Facebook">
+                <TechIcon name="facebook" size={18} />
               </a>
-
-              <a
-                href="https://x.com/peak_brosmao"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-pill"
-                title="X Twitter (@peak_brosmao)"
-              >
-                <TechIcon name="x" size={17} />
+              <a href="https://x.com/peak_brosmao" target="_blank" rel="noopener noreferrer"
+                 className="social-pill" title="X (Twitter)">
+                <TechIcon name="x" size={16} />
               </a>
-
-              <a
-                href="https://www.youtube.com/@peak_brosmao"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-pill"
-                title="YouTube (@peak_brosmao)"
-              >
-                <TechIcon name="youtube" size={19} />
+              <a href="https://www.youtube.com/@peak_brosmao" target="_blank" rel="noopener noreferrer"
+                 className="social-pill" title="YouTube">
+                <TechIcon name="youtube" size={18} />
               </a>
-
-              <a
-                href="https://www.linkedin.com/in/peak-brosmao-2a5304389/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-pill"
-                title="LinkedIn Profile"
-              >
-                <TechIcon name="linkedin" size={18} />
+              <a href="https://www.linkedin.com/in/peak-brosmao-2a5304389/" target="_blank" rel="noopener noreferrer"
+                 className="social-pill" title="LinkedIn">
+                <TechIcon name="linkedin" size={17} />
               </a>
-
-              <a
-                href="mailto:contact@peakbrosmao.me"
-                className="social-pill"
-                title="Official Email"
-              >
-                <Mail size={18} />
+              <a href="mailto:contact@peakbrosmao.me" className="social-pill" title="Email">
+                <Mail size={17} />
               </a>
             </div>
           </div>
 
-          {/* Right Visual Frame */}
+          {/* Right — Portrait */}
           <div className="hero-visual-wrap">
-            <div className="portrait-glow-backdrop"></div>
+            <div className="portrait-glow-backdrop" />
 
-            {/* Floating Chip 1: ITC GIC */}
+            {/* ITC Chip */}
             <div className="floating-chip chip-itc">
               <div className="chip-icon-box">
-                <img src="/img/itc-logo.png" alt="ITC Logo" className="chip-itc-logo" />
+                <img src="/img/itc-logo.png" alt="ITC" className="chip-itc-logo" />
               </div>
               <div className="chip-text">
                 <span className="chip-title">{t.chipItcTitle}</span>
@@ -174,21 +130,17 @@ export const HomePage = () => {
               </div>
             </div>
 
-            {/* Rotating Portrait Ring */}
+            {/* Portrait Ring */}
             <div className="portrait-frame">
               <div className="portrait-inner">
-                <img
-                  src="/img/profile.jpg"
-                  alt="PEAK BROSMAO"
-                  className="portrait-img"
-                />
+                <img src="/img/profile.jpg" alt="PEAK BROSMAO" className="portrait-img" />
               </div>
             </div>
 
-            {/* Floating Chip 2: Creator & Developer */}
+            {/* Creative Chip */}
             <div className="floating-chip chip-creative">
               <div className="chip-icon-box">
-                <TechIcon name="video" size={20} className="icon-cyan" />
+                <TechIcon name="video" size={19} />
               </div>
               <div className="chip-text">
                 <span className="chip-title">{t.chipCreativeTitle}</span>
@@ -199,13 +151,13 @@ export const HomePage = () => {
         </div>
       </section>
 
-      {/* ================= STATS BANNER ================= */}
+      {/* ═══════════════ STATS BANNER ═══════════════ */}
       <div className="stats-banner-wrap">
         <div className="container">
-          <div className="stats-grid">
+          <div className="stats-grid reveal">
             <div className="stat-item">
               <div className="stat-icon-wrap stat-itc">
-                <img src="/img/itc-logo.png" alt="ITC Logo" className="stat-itc-logo" />
+                <img src="/img/itc-logo.png" alt="ITC" className="stat-itc-logo" />
               </div>
               <div>
                 <div className="stat-value">{t.statYearUni}</div>
@@ -215,7 +167,7 @@ export const HomePage = () => {
 
             <div className="stat-item">
               <div className="stat-icon-wrap stat-award">
-                <Award size={24} />
+                <Award size={22} />
               </div>
               <div>
                 <div className="stat-value">{t.statGradB}</div>
@@ -225,7 +177,7 @@ export const HomePage = () => {
 
             <div className="stat-item">
               <div className="stat-icon-wrap stat-exp">
-                <Flame size={24} />
+                <Flame size={22} />
               </div>
               <div>
                 <div className="stat-value">{t.statExp}</div>
@@ -235,7 +187,7 @@ export const HomePage = () => {
 
             <div className="stat-item">
               <div className="stat-icon-wrap stat-projects">
-                <FolderGit2 size={24} />
+                <FolderGit2 size={22} />
               </div>
               <div>
                 <div className="stat-value">{t.statProjects}</div>
@@ -246,83 +198,83 @@ export const HomePage = () => {
         </div>
       </div>
 
-      {/* ================= EXPLORE PORTFOLIO PAGES GRID ================= */}
-      <section className="section" style={{ paddingTop: '20px' }}>
+      {/* ═══════════════ HUB GRID ═══════════════ */}
+      <section className="section" style={{ paddingTop: '10px' }}>
         <div className="container">
-          <div className="section-header">
+          <div className="section-header reveal">
             <span className="section-badge">{t.hubBadge}</span>
             <h2 className="section-title">{t.hubTitle}</h2>
             <p className="section-subtitle">{t.hubSubtitle}</p>
           </div>
 
           <div className="hub-pages-grid">
-            {/* Hub Card: About */}
-            <Link to="/about" className="glass-card hub-card">
+            {/* About — wide */}
+            <Link to="/about" className="glass-card hub-card reveal reveal-delay-1">
               <div className="hub-card-header">
                 <div className="hub-icon-wrap">
-                  <Sparkles size={24} color="#6366f1" />
+                  <Sparkles size={22} color="var(--accent-primary)" />
                 </div>
-                <ArrowRight size={20} className="hub-arrow" />
+                <ArrowRight size={19} className="hub-arrow" />
               </div>
               <h3 className="hub-card-title">{t.navAbout}</h3>
               <p className="hub-card-desc">{t.hubAboutDesc}</p>
             </Link>
 
-            {/* Hub Card: Education */}
-            <Link to="/education" className="glass-card hub-card">
+            {/* Education */}
+            <Link to="/education" className="glass-card hub-card reveal reveal-delay-2">
               <div className="hub-card-header">
                 <div className="hub-icon-wrap">
-                  <GraduationCap size={24} color="#06b6d4" />
+                  <GraduationCap size={22} color="var(--accent-secondary)" />
                 </div>
-                <ArrowRight size={20} className="hub-arrow" />
+                <ArrowRight size={19} className="hub-arrow" />
               </div>
               <h3 className="hub-card-title">{t.navEducation}</h3>
               <p className="hub-card-desc">{t.hubEduDesc}</p>
             </Link>
 
-            {/* Hub Card: Skills */}
-            <Link to="/skills" className="glass-card hub-card">
+            {/* Skills */}
+            <Link to="/skills" className="glass-card hub-card reveal reveal-delay-1">
               <div className="hub-card-header">
                 <div className="hub-icon-wrap">
-                  <TechIcon name="react" size={26} />
+                  <Code2 size={22} color="var(--accent-amber)" />
                 </div>
-                <ArrowRight size={20} className="hub-arrow" />
+                <ArrowRight size={19} className="hub-arrow" />
               </div>
               <h3 className="hub-card-title">{t.navSkills}</h3>
               <p className="hub-card-desc">{t.hubSkillsDesc}</p>
             </Link>
 
-            {/* Hub Card: Experience */}
-            <Link to="/experience" className="glass-card hub-card">
+            {/* Experience */}
+            <Link to="/experience" className="glass-card hub-card reveal reveal-delay-2">
               <div className="hub-card-header">
                 <div className="hub-icon-wrap">
-                  <TechIcon name="video" size={24} />
+                  <Video size={22} color="var(--accent-secondary)" />
                 </div>
-                <ArrowRight size={20} className="hub-arrow" />
+                <ArrowRight size={19} className="hub-arrow" />
               </div>
               <h3 className="hub-card-title">{t.navExperience}</h3>
               <p className="hub-card-desc">{t.hubExpDesc}</p>
             </Link>
 
-            {/* Hub Card: Achievements */}
-            <Link to="/achievements" className="glass-card hub-card">
+            {/* Achievements */}
+            <Link to="/achievements" className="glass-card hub-card reveal reveal-delay-3">
               <div className="hub-card-header">
                 <div className="hub-icon-wrap">
-                  <Award size={24} color="#f59e0b" />
+                  <Trophy size={22} color="var(--accent-amber)" />
                 </div>
-                <ArrowRight size={20} className="hub-arrow" />
+                <ArrowRight size={19} className="hub-arrow" />
               </div>
               <h3 className="hub-card-title">{t.navAchievements}</h3>
               <p className="hub-card-desc">{t.hubAchieveDesc}</p>
             </Link>
 
-            {/* Hub Card: Contact */}
-            <Link to="/contact" className="glass-card hub-card">
+            {/* Contact */}
+            <Link to="/contact" className="glass-card hub-card reveal reveal-delay-3">
               <div className="hub-card-header">
                 <div className="hub-icon-wrap">
-                  <Send size={24} color="#10b981" />
+                  <Send size={22} color="var(--accent-emerald)" />
                 </div>
-                <ArrowRight size={20} className="hub-arrow" />
+                <ArrowRight size={19} className="hub-arrow" />
               </div>
               <h3 className="hub-card-title">{t.navContact}</h3>
               <p className="hub-card-desc">{t.hubContactDesc}</p>
@@ -330,6 +282,7 @@ export const HomePage = () => {
           </div>
         </div>
       </section>
+
     </div>
   );
 };

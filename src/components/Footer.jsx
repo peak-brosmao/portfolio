@@ -7,16 +7,26 @@ import { ArrowUp, Mail, Send, Heart } from 'lucide-react';
 export const Footer = () => {
   const { t } = useLanguage();
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  const navLinks = [
+    { to: '/',             label: t.navHome },
+    { to: '/about',        label: t.navAbout },
+    { to: '/education',    label: t.navEducation },
+    { to: '/skills',       label: t.navSkills },
+    { to: '/experience',   label: t.navExperience },
+    { to: '/achievements', label: t.navAchievements },
+    { to: '/contact',      label: t.navContact },
+  ];
 
   return (
-    <footer className="site-footer-redesigned">
+    <footer className="site-footer">
       <div className="container">
-        {/* Main Footer Glass Card */}
         <div className="footer-glass-box">
-          <div className="footer-grid-redesigned">
+          {/* Gradient top accent bar */}
+          <div className="footer-top-bar" />
+
+          <div className="footer-grid">
             {/* Brand Column */}
             <div className="footer-brand-col">
               <div className="footer-brand-header">
@@ -28,116 +38,95 @@ export const Footer = () => {
               </div>
               <p className="footer-brand-desc">{t.footerDesc}</p>
 
-              {/* Social Icon Pills */}
               <div className="footer-social-row">
-                <a
-                  href="https://t.me/peak_brosmao"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-social-btn"
-                  title="Telegram (@peak_brosmao)"
-                >
-                  <TechIcon name="telegram" size={18} />
+                <a href="https://t.me/peak_brosmao" target="_blank" rel="noopener noreferrer"
+                   className="footer-social-btn" title="Telegram">
+                  <TechIcon name="telegram" size={17} />
                 </a>
-
-                <a
-                  href="https://www.facebook.com/peakbrosmao"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-social-btn"
-                  title="Facebook Profile"
-                >
-                  <TechIcon name="facebook" size={18} />
+                <a href="https://www.facebook.com/peakbrosmao" target="_blank" rel="noopener noreferrer"
+                   className="footer-social-btn" title="Facebook">
+                  <TechIcon name="facebook" size={17} />
                 </a>
-
-                <a
-                  href="https://x.com/peak_brosmao"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-social-btn"
-                  title="X (Twitter)"
-                >
-                  <TechIcon name="x" size={16} />
+                <a href="https://x.com/peak_brosmao" target="_blank" rel="noopener noreferrer"
+                   className="footer-social-btn" title="X (Twitter)">
+                  <TechIcon name="x" size={15} />
                 </a>
-
-                <a
-                  href="https://www.youtube.com/@peak_brosmao"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-social-btn"
-                  title="YouTube Channel"
-                >
-                  <TechIcon name="youtube" size={18} />
+                <a href="https://www.youtube.com/@peak_brosmao" target="_blank" rel="noopener noreferrer"
+                   className="footer-social-btn" title="YouTube">
+                  <TechIcon name="youtube" size={17} />
                 </a>
-
-                <a
-                  href="https://www.linkedin.com/in/peak-brosmao-2a5304389/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer-social-btn"
-                  title="LinkedIn Profile"
-                >
-                  <TechIcon name="linkedin" size={17} />
+                <a href="https://www.linkedin.com/in/peak-brosmao-2a5304389/" target="_blank" rel="noopener noreferrer"
+                   className="footer-social-btn" title="LinkedIn">
+                  <TechIcon name="linkedin" size={16} />
                 </a>
-
-                <a
-                  href="mailto:contact@peakbrosmao.me"
-                  className="footer-social-btn"
-                  title="Email"
-                >
-                  <Mail size={17} />
+                <a href="mailto:contact@peakbrosmao.me"
+                   className="footer-social-btn" title="Email">
+                  <Mail size={16} />
                 </a>
               </div>
             </div>
 
-            {/* Quick Navigation Links */}
-            <div className="footer-links-col">
+            {/* Quick Links */}
+            <div>
               <h4 className="footer-section-title">{t.footerLinksTitle}</h4>
               <ul className="footer-nav-list">
-                <li><Link to="/">{t.navHome}</Link></li>
-                <li><Link to="/about">{t.navAbout}</Link></li>
-                <li><Link to="/education">{t.navEducation}</Link></li>
-                <li><Link to="/skills">{t.navSkills}</Link></li>
-                <li><Link to="/experience">{t.navExperience}</Link></li>
-                <li><Link to="/achievements">{t.navAchievements}</Link></li>
-                <li><Link to="/contact">{t.navContact}</Link></li>
+                {navLinks.map((l) => (
+                  <li key={l.to}>
+                    <Link to={l.to}>{l.label}</Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
-            {/* Direct Contact Channel Column */}
-            <div className="footer-contact-col">
+            {/* Direct Channels */}
+            <div>
               <h4 className="footer-section-title">{t.footerContactTitle}</h4>
               <ul className="footer-contact-list">
                 <li>
                   <a href="mailto:contact@peakbrosmao.me" className="footer-contact-link">
-                    <Mail size={16} color="#06b6d4" />
+                    <Mail size={15} color="var(--accent-secondary)" />
                     <span>contact@peakbrosmao.me</span>
                   </a>
                 </li>
                 <li>
-                  <a href="https://t.me/peak_brosmao" target="_blank" rel="noopener noreferrer" className="footer-contact-link">
-                    <TechIcon name="telegram" size={16} />
+                  <a href="https://t.me/peak_brosmao" target="_blank" rel="noopener noreferrer"
+                     className="footer-contact-link">
+                    <TechIcon name="telegram" size={15} />
                     <span>t.me/peak_brosmao</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.facebook.com/peakbrosmao" target="_blank" rel="noopener noreferrer"
+                     className="footer-contact-link">
+                    <TechIcon name="facebook" size={15} />
+                    <span>facebook.com/peakbrosmao</span>
                   </a>
                 </li>
               </ul>
 
-              <div style={{ marginTop: '20px' }}>
-                <Link to="/contact" className="footer-cta-btn">
-                  <Send size={15} />
-                  <span>{t.heroCtaContact}</span>
-                </Link>
-              </div>
+              <Link to="/contact" className="footer-cta-btn">
+                <Send size={14} />
+                <span>{t.heroCtaContact}</span>
+              </Link>
             </div>
           </div>
 
           {/* Bottom Bar */}
           <div className="footer-bottom-bar">
             <p className="footer-copyright">
-              &copy; {new Date().getFullYear()} <strong>PEAK BROSMAO</strong>. {t.footerRights}
+              &copy; {new Date().getFullYear()} <strong>PEAK BROSMAO</strong>.{' '}
+              {t.footerRights}{' '}
+              <a href="https://peakbrosmao.me" target="_blank" rel="noopener noreferrer">
+                peakbrosmao.me
+              </a>
             </p>
-            <button className="footer-scroll-top-btn" onClick={scrollToTop} aria-label="Back to top" title="Back to top">
-              <ArrowUp size={17} />
+            <button
+              className="footer-scroll-top-btn"
+              onClick={scrollToTop}
+              aria-label="Back to top"
+              title="Back to top"
+            >
+              <ArrowUp size={16} />
             </button>
           </div>
         </div>

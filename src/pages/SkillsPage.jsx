@@ -13,8 +13,9 @@ export const SkillsPage = () => {
       category: 'web',
       catLabel: t.skillWebDevCat,
       level: t.skillLevelAdvanced,
-      progress: 50,
-      iconName: 'html5'
+      levelKey: 'advanced',
+      progress: 82,
+      iconName: 'html5',
     },
     {
       id: 'react',
@@ -22,8 +23,9 @@ export const SkillsPage = () => {
       category: 'web',
       catLabel: t.catFrontend,
       level: t.skillLevelLearning,
-      progress: 10,
-      iconName: 'react'
+      levelKey: 'learning',
+      progress: 35,
+      iconName: 'react',
     },
     {
       id: 'cpp',
@@ -31,8 +33,9 @@ export const SkillsPage = () => {
       category: 'web',
       catLabel: t.skillsCurrentStudy,
       level: t.skillLevelLearning,
-      progress: 10,
-      iconName: 'cpp'
+      levelKey: 'learning',
+      progress: 28,
+      iconName: 'cpp',
     },
     {
       id: 'php',
@@ -40,17 +43,19 @@ export const SkillsPage = () => {
       category: 'web',
       catLabel: t.catBackend,
       level: t.skillLevelIntermediate,
-      progress: 10,
-      iconName: 'php'
+      levelKey: 'intermediate',
+      progress: 32,
+      iconName: 'php',
     },
     {
       id: 'wordpress',
-      name: 'WordPress & Blogger (CMS)',
+      name: 'WordPress & Blogger',
       category: 'web',
       catLabel: t.catCms,
       level: t.skillLevelAdvanced,
-      progress: 50,
-      iconName: 'wordpress'
+      levelKey: 'advanced',
+      progress: 78,
+      iconName: 'wordpress',
     },
     {
       id: 'video',
@@ -58,8 +63,9 @@ export const SkillsPage = () => {
       category: 'video',
       catLabel: t.skillMediaCat,
       level: t.skillLevelAdvanced,
+      levelKey: 'advanced',
       progress: 88,
-      iconName: 'video'
+      iconName: 'video',
     },
     {
       id: 'camera',
@@ -67,8 +73,9 @@ export const SkillsPage = () => {
       category: 'video',
       catLabel: t.catCamera,
       level: t.skillLevelIntermediate,
-      progress: 82,
-      iconName: 'camera'
+      levelKey: 'intermediate',
+      progress: 75,
+      iconName: 'camera',
     },
     {
       id: 'print',
@@ -76,8 +83,9 @@ export const SkillsPage = () => {
       category: 'print',
       catLabel: t.skillPrintCat,
       level: t.skillLevelAdvanced,
+      levelKey: 'advanced',
       progress: 90,
-      iconName: 'print'
+      iconName: 'print',
     },
     {
       id: 'design',
@@ -85,8 +93,9 @@ export const SkillsPage = () => {
       category: 'print',
       catLabel: t.catDesign,
       level: t.skillLevelIntermediate,
-      progress: 80,
-      iconName: 'design'
+      levelKey: 'intermediate',
+      progress: 72,
+      iconName: 'design',
     },
     {
       id: 'word',
@@ -94,72 +103,81 @@ export const SkillsPage = () => {
       category: 'print',
       catLabel: t.skillToolsCat,
       level: t.skillLevelAdvanced,
-      progress: 95,
-      iconName: 'word'
-    }
+      levelKey: 'advanced',
+      progress: 92,
+      iconName: 'word',
+    },
   ];
 
-  const filteredSkills =
-    filter === 'all' ? skills : skills.filter((s) => s.category === filter);
+  const tabs = [
+    { key: 'all',   label: t.tabAllSkills },
+    { key: 'web',   label: t.tabWebDev },
+    { key: 'video', label: t.tabVideo },
+    { key: 'print', label: t.tabPrint },
+  ];
+
+  const filtered = filter === 'all' ? skills : skills.filter((s) => s.category === filter);
+
+  const levelClass = (key) => {
+    if (key === 'learning')     return 'learning';
+    if (key === 'intermediate') return 'intermediate';
+    return '';
+  };
 
   return (
     <div className="page-container container">
-      <div className="section-header">
+      <div className="section-header reveal">
         <span className="section-badge">{t.skillsTitle}</span>
         <h1 className="section-title">{t.skillsHeading}</h1>
         <p className="section-subtitle">{t.skillsSubtitle}</p>
       </div>
 
-      {/* Category Tabs */}
+      {/* Filter Tabs */}
       <div className="skills-filter-nav">
-        <button
-          className={`skill-tab-btn ${filter === 'all' ? 'active' : ''}`}
-          onClick={() => setFilter('all')}
-        >
-          {t.tabAllSkills}
-        </button>
-        <button
-          className={`skill-tab-btn ${filter === 'web' ? 'active' : ''}`}
-          onClick={() => setFilter('web')}
-        >
-          {t.tabWebDev}
-        </button>
-        <button
-          className={`skill-tab-btn ${filter === 'video' ? 'active' : ''}`}
-          onClick={() => setFilter('video')}
-        >
-          {t.tabVideo}
-        </button>
-        <button
-          className={`skill-tab-btn ${filter === 'print' ? 'active' : ''}`}
-          onClick={() => setFilter('print')}
-        >
-          {t.tabPrint}
-        </button>
+        {tabs.map((tab) => (
+          <button
+            key={tab.key}
+            className={`skill-tab-btn ${filter === tab.key ? 'active' : ''}`}
+            onClick={() => setFilter(tab.key)}
+            id={`skills-tab-${tab.key}`}
+          >
+            {tab.label}
+          </button>
+        ))}
       </div>
 
-      {/* Skills Grid with Real Logos */}
+      {/* Skills Grid */}
       <div className="skills-grid">
-        {filteredSkills.map((skill) => (
-          <div key={skill.id} className="glass-card skill-card">
+        {filtered.map((skill, i) => (
+          <div
+            key={skill.id}
+            className={`glass-card skill-card reveal reveal-delay-${Math.min(i % 4 + 1, 5)}`}
+          >
             <div className="skill-card-top">
               <div className="skill-badge-icon">
                 <TechIcon name={skill.iconName} size={26} />
               </div>
-              <span
-                className={`skill-level-tag ${skill.level === t.skillLevelLearning ? 'learning' : ''
-                  }`}
-              >
+              <span className={`skill-level-tag ${levelClass(skill.levelKey)}`}>
                 {skill.level}
               </span>
             </div>
+
             <h4 className="skill-name">{skill.name}</h4>
             <div className="skill-category-label">{skill.catLabel}</div>
-            <div className="skill-progress-track">
-              <div
-                className="skill-progress-fill"
-                style={{ width: `${skill.progress}%` }}
-              ></div>
+
+            <div className="skill-progress-wrap">
+              <div className="skill-progress-header">
+                <span className="skill-category-label" style={{ fontSize: '0.74rem' }}>
+                  Proficiency
+                </span>
+                <span className="skill-progress-pct">{skill.progress}%</span>
+              </div>
+              <div className="skill-progress-track">
+                <div
+                  className="skill-progress-fill"
+                  style={{ width: `${skill.progress}%` }}
+                />
+              </div>
             </div>
           </div>
         ))}

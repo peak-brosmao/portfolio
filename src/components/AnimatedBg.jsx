@@ -2,156 +2,140 @@ import React, { useEffect, useRef } from 'react';
 
 export const AnimatedBg = ({ theme }) => {
   const canvasRef = useRef(null);
-  const themeRef = useRef(theme);
+  const themeRef  = useRef(theme);
 
-  // Keep themeRef updated
-  useEffect(() => {
-    themeRef.current = theme;
-  }, [theme]);
+  useEffect(() => { themeRef.current = theme; }, [theme]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
-    let animationFrameId;
+    let rafId;
 
-    let width = (canvas.width = window.innerWidth);
-    let height = (canvas.height = window.innerHeight);
+    let W = canvas.width  = window.innerWidth;
+    let H = canvas.height = window.innerHeight;
 
-    const handleResize = () => {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
+    const onResize = () => {
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener('resize', onResize, { passive: true });
 
-    // Particle settings
-    const particleCount = Math.min(Math.floor((width * height) / 14000), 85);
-    const particles = [];
-    const mouse = { x: -1000, y: -1000, radius: 140 };
+    // Mouse repulsion
+    const mouse = { x: -2000, y: -2000, radius: 130 };
+    const onMove = (e) => { mouse.x = e.clientX; mouse.y = e.clientY; };
+    window.addEventListener('mousemove', onMove, { passive: true });
 
-    const handleMouseMove = (e) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-    };
-    window.addEventListener('mousemove', handleMouseMove);
+    // Particles
+    const COUNT = Math.min(Math.floor((W * H) / 13000), 90);
+    const pts = Array.from({ length: COUNT }, () => ({
+      x:  Math.random() * W,
+      y:  Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.65,
+      vy: (Math.random() - 0.5) * 0.65,
+      r:  Math.random() * 1.8 + 0.8,
+      a:  Math.random() * 0.55 + 0.15,
+    }));
 
-    for (let i = 0; i < particleCount; i++) {
-      particles.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.7,
-        vy: (Math.random() - 0.5) * 0.7,
-        radius: Math.random() * 2 + 1,
-        baseAlpha: Math.random() * 0.5 + 0.2
+    // Aurora blobs
+    const blobs = [
+      { x: W * 0.80, y: H * 0.18, r: 380, vx: 0.18, vy: 0.10, color: [99, 102, 241] },
+      { x: W * 0.12, y: H * 0.70, r: 360, vx: -0.14, vy: -0.09, color: [6, 182, 212] },
+      { x: W * 0.55, y: H * 0.85, r: 300, vx: 0.10, vy: 0.14, color: [245, 158, 11] },
+    ];
+
+    let ratio = themeRef.current === 'light' ? 1.0 : 0.0;
+
+    const draw = () => {
+      ctx.clearRect(0, 0, W, H);
+
+      // Smooth theme lerp
+      const target = themeRef.current === 'light' ? 1.0 : 0.0;
+      ratio += (target - ratio) * 0.05;
+
+      // --- Aurora blobs ---
+      blobs.forEach((b) => {
+        b.x += b.vx; b.y += b.vy;
+        if (b.x < -b.r || b.x > W + b.r) b.vx *= -1;
+        if (b.y < -b.r || b.y > H + b.r) b.vy *= -1;
+
+        const alpha = 0.11 * (1 - ratio) + 0.045 * ratio;
+        const g = ctx.createRadialGradient(b.x, b.y, 0, b.x, b.y, b.r);
+        g.addColorStop(0, `rgba(${b.color[0]},${b.color[1]},${b.color[2]},${alpha})`);
+        g.addColorStop(1, 'transparent');
+        ctx.fillStyle = g;
+        ctx.fillRect(0, 0, W, H);
       });
-    }
 
-    // Smooth lerp for theme transition: 0.0 = dark, 1.0 = light
-    let themeRatio = themeRef.current === 'light' ? 1.0 : 0.0;
+      // --- Particles ---
+      for (let i = 0; i < pts.length; i++) {
+        const p = pts[i];
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0 || p.x > W) p.vx *= -1;
+        if (p.y < 0 || p.y > H) p.vy *= -1;
 
-    const render = () => {
-      ctx.clearRect(0, 0, width, height);
-
-      // Smoothly interpolate themeRatio towards target
-      const targetRatio = themeRef.current === 'light' ? 1.0 : 0.0;
-      themeRatio += (targetRatio - themeRatio) * 0.06;
-
-      // Draw subtle luminous gradients smoothly blended
-      const g1Alpha = 0.14 * (1 - themeRatio) + 0.06 * themeRatio;
-      const grad1 = ctx.createRadialGradient(width * 0.8, height * 0.2, 10, width * 0.8, height * 0.2, 400);
-      grad1.addColorStop(0, `rgba(99, 102, 241, ${g1Alpha})`);
-      grad1.addColorStop(1, 'transparent');
-      ctx.fillStyle = grad1;
-      ctx.fillRect(0, 0, width, height);
-
-      const g2Alpha = 0.12 * (1 - themeRatio) + 0.05 * themeRatio;
-      const grad2 = ctx.createRadialGradient(width * 0.15, height * 0.65, 10, width * 0.15, height * 0.65, 380);
-      grad2.addColorStop(0, `rgba(6, 182, 212, ${g2Alpha})`);
-      grad2.addColorStop(1, 'transparent');
-      ctx.fillStyle = grad2;
-      ctx.fillRect(0, 0, width, height);
-
-      // Connect particles
-      for (let i = 0; i < particles.length; i++) {
-        const p1 = particles[i];
-
-        // Move
-        p1.x += p1.vx;
-        p1.y += p1.vy;
-
-        if (p1.x < 0 || p1.x > width) p1.vx *= -1;
-        if (p1.y < 0 || p1.y > height) p1.vy *= -1;
-
-        // Mouse interaction
-        const dxMouse = p1.x - mouse.x;
-        const dyMouse = p1.y - mouse.y;
-        const distMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
-        if (distMouse < mouse.radius) {
-          const angle = Math.atan2(dyMouse, dxMouse);
-          p1.x += Math.cos(angle) * 1.5;
-          p1.y += Math.sin(angle) * 1.5;
+        // Mouse repulsion
+        const dx = p.x - mouse.x;
+        const dy = p.y - mouse.y;
+        const d  = Math.hypot(dx, dy);
+        if (d < mouse.radius) {
+          const ang = Math.atan2(dy, dx);
+          p.x += Math.cos(ang) * 1.8;
+          p.y += Math.sin(ang) * 1.8;
         }
 
-        // Draw particle dot with smooth color blending
+        // Dot color blend
+        const pR = Math.round(99  * (1 - ratio) + 79  * ratio);
+        const pG = Math.round(102 * (1 - ratio) + 70  * ratio);
+        const pB = Math.round(241 * (1 - ratio) + 229 * ratio);
+        const pA = p.a * (1 - 0.3 * ratio);
+
         ctx.beginPath();
-        ctx.arc(p1.x, p1.y, p1.radius, 0, Math.PI * 2);
-        
-        // Blend between dark indigo and light indigo
-        const dotR = Math.round(99 * (1 - themeRatio) + 79 * themeRatio);
-        const dotG = Math.round(102 * (1 - themeRatio) + 70 * themeRatio);
-        const dotB = Math.round(241 * (1 - themeRatio) + 229 * themeRatio);
-        const dotAlpha = p1.baseAlpha * (1 - 0.25 * themeRatio);
-        ctx.fillStyle = `rgba(${dotR}, ${dotG}, ${dotB}, ${dotAlpha})`;
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${pR},${pG},${pB},${pA})`;
         ctx.fill();
 
-        // Connect with nearby particles
-        for (let j = i + 1; j < particles.length; j++) {
-          const p2 = particles[j];
-          const dx = p1.x - p2.x;
-          const dy = p1.y - p2.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-
-          if (dist < 130) {
+        // Connect nearby particles
+        for (let j = i + 1; j < pts.length; j++) {
+          const q   = pts[j];
+          const ddx = p.x - q.x;
+          const ddy = p.y - q.y;
+          const dd  = Math.hypot(ddx, ddy);
+          if (dd < 125) {
+            const lA = (1 - dd / 125) * (0.20 * (1 - ratio) + 0.10 * ratio);
+            const lR = Math.round(6   * (1 - ratio) + 99  * ratio);
+            const lG = Math.round(182 * (1 - ratio) + 102 * ratio);
+            const lB = Math.round(212 * (1 - ratio) + 241 * ratio);
             ctx.beginPath();
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(p2.x, p2.y);
-            
-            const lineAlpha = (1 - dist / 130) * (0.22 * (1 - themeRatio) + 0.12 * themeRatio);
-            // Blend from cyber cyan (6, 182, 212) to light indigo (79, 70, 229)
-            const lineR = Math.round(6 * (1 - themeRatio) + 79 * themeRatio);
-            const lineG = Math.round(182 * (1 - themeRatio) + 70 * themeRatio);
-            const lineB = Math.round(212 * (1 - themeRatio) + 229 * themeRatio);
-
-            ctx.strokeStyle = `rgba(${lineR}, ${lineG}, ${lineB}, ${lineAlpha})`;
-            ctx.lineWidth = 0.9;
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.strokeStyle = `rgba(${lR},${lG},${lB},${lA})`;
+            ctx.lineWidth = 0.8;
             ctx.stroke();
           }
         }
       }
 
-      animationFrameId = requestAnimationFrame(render);
+      rafId = requestAnimationFrame(draw);
     };
 
-    render();
+    draw();
 
     return () => {
-      window.removeEventListener('resize', handleResize);
-      window.removeEventListener('mousemove', handleMouseMove);
-      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('mousemove', onMove);
+      cancelAnimationFrame(rafId);
     };
-  }, []); // Run once on mount, keep particles alive
+  }, []);
 
   return (
     <canvas
       ref={canvasRef}
       style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
+        position: 'fixed', top: 0, left: 0,
+        width: '100%', height: '100%',
         pointerEvents: 'none',
-        zIndex: 0
+        zIndex: 0,
       }}
     />
   );
