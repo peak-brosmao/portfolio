@@ -76,15 +76,6 @@ export const Navbar = () => {
               </NavLink>
             ))}
 
-            {/* Mobile-only CTA inside drawer */}
-            <Link
-              to="/contact"
-              className="mobile-connect-btn"
-              onClick={closeMobile}
-            >
-              <Zap size={16} />
-              <span>{t.hireMeBtn}</span>
-            </Link>
           </nav>
 
           {/* Actions */}
