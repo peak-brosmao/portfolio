@@ -13,7 +13,7 @@ export const SkillsPage = () => {
       category: 'web',
       catLabel: t.skillWebDevCat,
       level: t.skillLevelAdvanced,
-      progress: 90,
+      progress: 50,
       iconName: 'html5'
     },
     {
@@ -22,7 +22,7 @@ export const SkillsPage = () => {
       category: 'web',
       catLabel: t.catFrontend,
       level: t.skillLevelLearning,
-      progress: 75,
+      progress: 10,
       iconName: 'react'
     },
     {
@@ -31,7 +31,7 @@ export const SkillsPage = () => {
       category: 'web',
       catLabel: t.skillsCurrentStudy,
       level: t.skillLevelLearning,
-      progress: 70,
+      progress: 10,
       iconName: 'cpp'
     },
     {
@@ -40,7 +40,7 @@ export const SkillsPage = () => {
       category: 'web',
       catLabel: t.catBackend,
       level: t.skillLevelIntermediate,
-      progress: 68,
+      progress: 10,
       iconName: 'php'
     },
     {
@@ -49,7 +49,7 @@ export const SkillsPage = () => {
       category: 'web',
       catLabel: t.catCms,
       level: t.skillLevelAdvanced,
-      progress: 92,
+      progress: 50,
       iconName: 'wordpress'
     },
     {
@@ -147,9 +147,8 @@ export const SkillsPage = () => {
                 <TechIcon name={skill.iconName} size={26} />
               </div>
               <span
-                className={`skill-level-tag ${
-                  skill.level === t.skillLevelLearning ? 'learning' : ''
-                }`}
+                className={`skill-level-tag ${skill.level === t.skillLevelLearning ? 'learning' : ''
+                  }`}
               >
                 {skill.level}
               </span>
