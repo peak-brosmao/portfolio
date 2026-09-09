@@ -115,12 +115,6 @@ export const Navbar = () => {
               </span>
             </button>
 
-            {/* Desktop CTA */}
-            <Link to="/contact" className="cta-hire-btn" onClick={closeMobile}>
-              <Zap size={14} />
-              <span>{t.hireMeBtn}</span>
-            </Link>
-
             {/* Hamburger */}
             <button
               className="mobile-nav-toggle"
