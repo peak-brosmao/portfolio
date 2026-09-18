@@ -1284,19 +1284,284 @@ img { display: block; max-width: 100%; }
 /* ==========================================================================
    Experience Page
    ========================================================================== */
+.exp-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto 36px;
+}
+
+.exp-metric-card {
+  padding: 20px 18px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.exp-metric-val {
+  font-family: var(--font-heading);
+  font-size: 1.85rem;
+  font-weight: 800;
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.exp-metric-title {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.exp-metric-sub {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+/* Filter Navigation */
+.exp-filter-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.exp-filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 24px;
+  border-radius: var(--radius-full);
+  font-size: 0.88rem;
+  font-weight: 600;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--t-fast);
+}
+
+.exp-filter-btn:hover {
+  border-color: var(--accent-primary);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+}
+
+.exp-filter-btn.active {
+  background: linear-gradient(135deg, var(--accent-primary), #4338ca) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 16px var(--glow-primary);
+}
+
+/* Section Headings inside Experience */
+.exp-section-block {
+  margin-bottom: 50px;
+}
+
+.exp-section-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.exp-section-indicator {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-md);
+  background: rgba(99, 102, 241, 0.12);
+  color: var(--accent-primary);
+  border: 1px solid rgba(99, 102, 241, 0.24);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.exp-section-indicator.role-indicator {
+  background: rgba(6, 182, 212, 0.12);
+  color: var(--accent-secondary);
+  border-color: rgba(6, 182, 212, 0.24);
+}
+
+.exp-section-heading {
+  font-family: var(--font-heading);
+  font-size: 1.28rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.exp-section-lead {
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+/* Live Apps Grid */
+.exp-apps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+  gap: 22px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.exp-app-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  height: 100%;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.exp-app-card .exp-card-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.exp-meta-topline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.exp-live-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  font-size: 0.70rem;
+  font-weight: 700;
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.28);
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.exp-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 6px #10b981;
+  animation: pulse-ring 2s infinite;
+}
+
+.exp-domain-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 9px;
+  border-radius: var(--radius-full);
+  font-size: 0.73rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  text-decoration: none;
+  transition: all var(--t-fast);
+}
+
+.exp-domain-pill:hover {
+  color: var(--accent-primary);
+  border-color: rgba(99, 102, 241, 0.35);
+  background: rgba(99, 102, 241, 0.08);
+}
+
+.exp-card-category {
+  font-size: 0.79rem;
+  font-weight: 600;
+  color: var(--accent-primary);
+  margin-top: 2px;
+}
+
+/* Action / Launch Button */
+.exp-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 14px;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: auto;
+}
+
+.exp-visit-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  text-decoration: none;
+  transition: all var(--t-normal);
+}
+
+.exp-visit-link:hover {
+  background: linear-gradient(135deg, var(--accent-primary), #4338ca) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px var(--glow-primary);
+}
+
+.exp-visit-link:hover .exp-link-icon {
+  transform: translate(2px, -2px);
+}
+
+.exp-link-icon {
+  transition: transform var(--t-fast);
+}
+
+/* Vibrant App Icon Pill Gradients */
+.exp-pill-violet { background: rgba(139, 92, 246, 0.14); color: #a78bfa; border: 1px solid rgba(139, 92, 246, 0.28); }
+.exp-pill-blue   { background: rgba(59, 130, 246, 0.14); color: #60a5fa; border: 1px solid rgba(59, 130, 246, 0.28); }
+.exp-pill-indigo { background: rgba(99, 102, 241, 0.14); color: #818cf8; border: 1px solid rgba(99, 102, 241, 0.28); }
+.exp-pill-rose   { background: rgba(244, 63, 94, 0.14); color: #fb7185; border: 1px solid rgba(244, 63, 94, 0.28); }
+.exp-pill-amber  { background: rgba(245, 158, 11, 0.14); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.28); }
+.exp-pill-cyan   { background: rgba(6, 182, 212, 0.14); color: #22d3ee; border: 1px solid rgba(6, 182, 212, 0.28); }
+.exp-pill-red    { background: rgba(239, 68, 68, 0.14); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.28); }
+
+/* Standard Role Experience Grid */
 .experience-grid {
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  max-width: 900px;
+  gap: 24px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
 .exp-card {
-  padding: 30px;
+  padding: 28px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
+  opacity: 1 !important;
+  transform: none !important;
 }
 
 .exp-card-inner { display: flex; flex-direction: column; gap: 12px; }
@@ -1326,14 +1591,15 @@ img { display: block; max-width: 100%; }
 
 .exp-card-title {
   font-family: var(--font-heading);
-  font-size: 1.12rem;
+  font-size: 1.10rem;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 4px;
+  line-height: 1.35;
 }
 
 .exp-card-company {
-  font-size: 0.88rem;
+  font-size: 0.86rem;
   color: var(--accent-primary);
   font-weight: 600;
   margin-bottom: 6px;
@@ -1349,9 +1615,9 @@ img { display: block; max-width: 100%; }
 }
 
 .exp-card-body {
-  font-size: 0.93rem;
+  font-size: 0.92rem;
   color: var(--text-secondary);
-  line-height: 1.72;
+  line-height: 1.70;
 }
 
 .exp-tags-row {
@@ -1367,7 +1633,7 @@ img { display: block; max-width: 100%; }
   border-radius: var(--radius-full);
   background: rgba(99, 102, 241, 0.08);
   border: 1px solid rgba(99, 102, 241, 0.18);
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 600;
   color: var(--accent-primary);
   transition: all var(--t-fast);
@@ -2105,6 +2371,7 @@ img { display: block; max-width: 100%; }
   .footer-grid > div:first-child { grid-column: span 2; }
 
   .achieve-grid { grid-template-columns: 1fr; }
+  .exp-metrics-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 640px) {
@@ -2135,4 +2402,9 @@ img { display: block; max-width: 100%; }
 
   .achieve-card { flex-direction: column; }
   .not-found-code { font-size: 7rem; }
+
+  .exp-metrics-grid { grid-template-columns: 1fr; }
+  .exp-apps-grid { grid-template-columns: 1fr; }
+  .exp-header-row { flex-direction: column; align-items: flex-start; }
 }
+

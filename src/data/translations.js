@@ -144,9 +144,77 @@ export const translations = {
     skillLevelLearning: "Actively Learning",
 
     // Experience Section
-    expTitle: "Practical Experience",
-    expHeading: "Hands-On Experience",
-    expSubtitle: "Real-world projects, hands-on production, and entrepreneurial work",
+    expTitle: "Practical Experience & Live Projects",
+    expHeading: "Hands-On Experience & Live Web Apps",
+    expSubtitle: "Live production platforms, hands-on engineering, film directing, and entrepreneurial work",
+    expFilterAll: "All Experience",
+    expFilterApps: "Live Web Apps (7)",
+    expFilterRoles: "Practical Roles (3)",
+    expStatsApps: "7+ Live Web Apps",
+    expStatsAppsSub: "Deployed in Production",
+    expStatsWeb: "1 Year Web Dev",
+    expStatsWebSub: "CMS, React & Next.js",
+    expStatsMedia: "2+ Years Media",
+    expStatsMediaSub: "Directing & Cinematography",
+    expStatsPrivacy: "100% Client-Side",
+    expStatsPrivacySub: "Fast & Private Browser Tools",
+    expLiveBadge: "Live Production",
+    expVisitBtn: "Visit Live Site",
+    expSectionApps: "Live Web Applications & Platforms",
+    expSectionAppsSub: "Production web applications, utilities, and online tools built and published by PEAK BROSMAO",
+    expSectionRoles: "Industry Roles & Practical Work",
+    expSectionRolesSub: "Practical software engineering, short film production, and commercial printing operations",
+
+    // App 1: iUseTools
+    appIUseToolsTitle: "iUseTools — 30+ Free Online Tools & File Converter",
+    appIUseToolsCompany: "iUseTools · Production Web App",
+    appIUseToolsDate: "2024 - Present",
+    appIUseToolsDesc: "A comprehensive suite of 30+ browser-based tools: OCR (JPG to Word), PDF converter/merger, image resizer/compressor, QR generator, JSON formatter, and developer utilities. All file conversions are processed 100% client-side for maximum speed and privacy.",
+    appIUseToolsCat: "Web Utility Suite · File Converter",
+
+    // App 2: URLGenZ
+    appUrlGenZTitle: "URLGenZ — Fast URL Shortener & Link Campaign Tools",
+    appUrlGenZCompany: "URLGenZ · Production Web App",
+    appUrlGenZDate: "2024 - Present",
+    appUrlGenZDesc: "A link management platform with custom short aliases, automatic QR code generation, bulk shortening, UTM campaign builder, link expiration, and social link preview tools.",
+    appUrlGenZCat: "Link Management · Marketing Tools",
+
+    // App 3: QRGenZ
+    appQrGenZTitle: "QRGenZ — Custom QR Generator & Live Camera Scanner",
+    appQrGenZCompany: "QRGenZ · Production Web App",
+    appQrGenZDate: "2024 - Present",
+    appQrGenZDesc: "Real-time QR code generator and scanner. Features 12 styled artistic templates, camera barcode scanning, image upload decoding, and high-resolution export in PNG, SVG, and JPEG formats.",
+    appQrGenZCat: "QR Ecosystem · Scanner & Generator",
+
+    // App 4: SnapDown
+    appSnapDownTitle: "SnapDown — HD Video & Audio Downloader",
+    appSnapDownCompany: "SnapDown · Production Web App",
+    appSnapDownDate: "2024 - Present",
+    appSnapDownDesc: "High-speed multimedia downloader for extracting HD MP4 videos and MP3 audio from YouTube, TikTok, Facebook, Instagram, and X without requiring software installations or sign-up.",
+    appSnapDownCat: "Media Extractor · Video & Audio",
+
+    // App 5: Fake-Inbox
+    appFakeInboxTitle: "Fake-Inbox — Temporary Disposable Email Service",
+    appFakeInboxCompany: "Fake-Inbox · Production Web App",
+    appFakeInboxDate: "2024 - Present",
+    appFakeInboxDesc: "Instant disposable temporary email mailbox generator for safeguarding personal privacy, preventing spam, and safely completing verification flows across online services.",
+    appFakeInboxCat: "Privacy Protection · Disposable Email",
+
+    // App 6: CamHost
+    appCamHostTitle: "CamHost.space — Private Cloud Storage via Telegram",
+    appCamHostCompany: "CamHost · Production Web App",
+    appCamHostDate: "2024 - Present",
+    appCamHostDesc: "An open-source unlimited private cloud storage platform built on top of Telegram's storage infrastructure, featuring browser-based file management, drag-and-drop uploads, and secure sharing.",
+    appCamHostCat: "Cloud Storage · Telegram API",
+
+    // App 7: 24hMovie
+    appMovieTitle: "24hMovie — Online Cinema & Streaming Platform",
+    appMovieCompany: "24hMovie · Production Web App",
+    appMovieDate: "2023 - Present",
+    appMovieDesc: "Responsive cinema streaming web portal with rapid buffering, categorized movie and series libraries, trailer previews, and an immersive dark-mode theater user experience.",
+    appMovieCat: "Cinema Streaming · Media Entertainment",
+
+    // Practical Experiences
     expWebTitle: "Web Development & CMS Architecture",
     expWebCompany: "Independent & Client Projects",
     expWebDate: "2021 - Present",
@@ -337,9 +405,77 @@ export const translations = {
     skillLevelLearning: "កំពុងបន្តរៀន",
 
     // Experience Section
-    expTitle: "បទពិសោធន៍ការងារ",
-    expHeading: "បទពិសោធន៍ការងារជាក់ស្តែង",
-    expSubtitle: "គម្រោងជាក់ស្តែង ការបង្កើតស្នាដៃ និងការគ្រប់គ្រងអាជីវកម្ម",
+    expTitle: "បទពិសោធន៍ការងារ & គម្រោងជាក់ស្តែង",
+    expHeading: "បទពិសោធន៍ការងារ & Web Apps ជាក់ស្តែង",
+    expSubtitle: "វេបសាយដំណើរការជាផ្លូវការ ការសរសេរកូដជាក់ស្តែង ការដឹកនាំរឿង និងការងារអាជីវកម្ម",
+    expFilterAll: "បទពិសោធន៍ទាំងអស់",
+    expFilterApps: "វេបសាយ & Web Apps (៧)",
+    expFilterRoles: "តួនាទី & ការងារជាក់ស្តែង (៣)",
+    expStatsApps: "៧+ Web Apps ជាក់ស្តែង",
+    expStatsAppsSub: "ដំណើរការលើ Production",
+    expStatsWeb: "១ ឆ្នាំ Web Dev",
+    expStatsWebSub: "CMS, React & Next.js",
+    expStatsMedia: "២+ ឆ្នាំ ផលិតមេឌា",
+    expStatsMediaSub: "ដឹកនាំរឿង & ថតវីដេអូ",
+    expStatsPrivacy: "ដំណើរការលើ Browser",
+    expStatsPrivacySub: "ល្បឿនលឿន និងសុវត្ថិភាព",
+    expLiveBadge: "កំពុងដំណើរការ (Live)",
+    expVisitBtn: "ចូលទស្សនាវេបសាយ",
+    expSectionApps: "វេបសាយ & ផលិតផល Web Apps ជាក់ស្តែង",
+    expSectionAppsSub: "វេបសាយ កម្មវិធី និងប្រព័ន្ធអនឡាញដែលខ្ញុំបានបង្កើត និងដាក់ឱ្យប្រើប្រាស់ជាសាធារណៈ",
+    expSectionRoles: "បទពិសោធន៍ការងារ & សកម្មភាពជាក់ស្តែង",
+    expSectionRolesSub: "បទពិសោធន៍ផ្ទាល់ផ្នែកអភិវឌ្ឍន៍សូហ្វវែរ ផលិតកម្មវីដេអូ និងអាជីវកម្មសេវាកម្ម",
+
+    // App 1: iUseTools
+    appIUseToolsTitle: "iUseTools — ឧបករណ៍បំលែងឯកសារ & Dev Tools ៣០+",
+    appIUseToolsCompany: "iUseTools · វេបសាយដំណើរការជាក់ស្តែង",
+    appIUseToolsDate: "២០២៤ - បច្ចុប្បន្ន",
+    appIUseToolsDesc: "ប្រព័ន្ធឧបករណ៍ Online ឥតគិតថ្លៃជាង ៣០+ រួមមាន OCR (JPG ទៅជា Word), PDF Converter/Merger, កាត់បន្ថយទំហំរូបភាព, QR Generator, JSON Formatter និង Developer Utilities ដោយដំណើរការលើ Browser ផ្ទាល់ប្រកបដោយសុវត្ថិភាព។",
+    appIUseToolsCat: "ប្រព័ន្ធឧបករណ៍ Web · File Converter",
+
+    // App 2: URLGenZ
+    appUrlGenZTitle: "URLGenZ — កម្មវិធីបង្រួម Link & ឧបករណ៍ទីផ្សារ",
+    appUrlGenZCompany: "URLGenZ · វេបសាយដំណើរការជាក់ស្តែង",
+    appUrlGenZDate: "២០២៤ - បច្ចុប្បន្ន",
+    appUrlGenZDesc: "ប្រព័ន្ធគ្រប់គ្រង និងបង្រួមតំណភ្ជាប់ (URL Shortener) ជាមួយមុខងារកំណត់ឈ្មោះ Link ផ្ទាល់ខ្លួន, បង្កើត QR Code ដោយស្វ័យប្រវត្តិ, Bulk Shortening, UTM Campaign Builder និង Social Link Preview។",
+    appUrlGenZCat: "ការគ្រប់គ្រង Link · Marketing Tools",
+
+    // App 3: QRGenZ
+    appQrGenZTitle: "QRGenZ — បង្កើត និងស្កេន QR Code តាមកាមេរ៉ា",
+    appQrGenZCompany: "QRGenZ · វេបសាយដំណើរការជាក់ស្តែង",
+    appQrGenZDate: "២០២៤ - បច្ចុប្បន្ន",
+    appQrGenZDesc: "កម្មវិធីបង្កើត និងស្កេន QR Code យ៉ាងរហ័ស ជាមួយម៉ូដរចនាស្អាតៗជាង ១២ បែប, ស្កេនផ្ទាល់តាមកាមេរ៉ាទូរស័ព្ទ ឬកុំព្យូទ័រ, និងទាញយកជារូបភាព PNG, SVG, JPEG គុណភាពច្បាស់កម្រិតខ្ពស់។",
+    appQrGenZCat: "ប្រព័ន្ធ QR Code · Generator & Scanner",
+
+    // App 4: SnapDown
+    appSnapDownTitle: "SnapDown — ទាញយកវីដេអូ & សំឡេង HD ពីបណ្តាញសង្គម",
+    appSnapDownCompany: "SnapDown · វេបសាយដំណើរការជាក់ស្តែង",
+    appSnapDownDate: "២០២៤ - បច្ចុប្បន្ន",
+    appSnapDownDesc: "វេបសាយទាញយកវីដេអូកម្រិត HD (MP4) និងសំឡេង (MP3) ពី YouTube, TikTok, Facebook, Instagram និង X (Twitter) ដោយល្បឿនលឿន មិនបាច់ដំឡើងកម្មវិធី ឬចុះឈ្មោះឡើយ។",
+    appSnapDownCat: "ទាញយកមេឌា · Video & Audio Downloader",
+
+    // App 5: Fake-Inbox
+    appFakeInboxTitle: "Fake-Inbox — សេវាអ៊ីមែលបណ្តោះអាសន្នការពារ Privacy",
+    appFakeInboxCompany: "Fake-Inbox · វេបសាយដំណើរការជាក់ស្តែង",
+    appFakeInboxDate: "២០២៤ - បច្ចុប្បន្ន",
+    appFakeInboxDesc: "សេវាកម្មបង្កើតប្រអប់សំបុត្រអ៊ីមែលបណ្តោះអាសន្នភ្លាមៗ ដើម្បីការពារអ៊ីមែលផ្ទាល់ខ្លួនពី Spam និងសុវត្ថិភាពក្នុងការផ្ទៀងផ្ទាត់គណនីលើវេបសាយនានា។",
+    appFakeInboxCat: "សុវត្ថិភាពទិន្នន័យ · Disposable Email",
+
+    // App 6: CamHost
+    appCamHostTitle: "CamHost.space — Cloud Storage ដំណើរការលើ Telegram",
+    appCamHostCompany: "CamHost · វេបសាយដំណើរការជាក់ស្តែង",
+    appCamHostDate: "២០២៤ - បច្ចុប្បន្ន",
+    appCamHostDesc: "ប្រព័ន្ធផ្ទុកឯកសារ Private Cloud Storage បែប Open-Source ដំណើរការលើហេដ្ឋារចនាសម្ព័ន្ធ Telegram API អាចគ្រប់គ្រងឯកសារលើ Browser យ៉ាងរលូន Drag-and-Drop ងាយស្រួល និងចែករំលែកឯកសារដោយសុវត្ថិភាព។",
+    appCamHostCat: "Cloud Storage · Telegram API",
+
+    // App 7: 24hMovie
+    appMovieTitle: "24hMovie — វេទិកាទស្សនាភាពយន្ត និងកម្សាន្តអនឡាញ",
+    appMovieCompany: "24hMovie · វេទិកាដំណើរការជាក់ស្តែង",
+    appMovieDate: "២០២៣ - បច្ចុប្បន្ន",
+    appMovieDesc: "វេទិកាទស្សនាភាពយន្ត និងរឿងភាគអនឡាញ ល្បឿនផ្ទុកលឿន មានបែងចែកប្រភេទច្បាស់លាស់ វីដេអូ Trailer និងចំណុចប្រទាក់ Dark Cinema UI ទំនើបទាក់ទាញ។",
+    appMovieCat: "ភាពយន្ត & កម្សាន្ត · Cinema Streaming",
+
+    // Practical Experiences
     expWebTitle: "ការអភិវឌ្ឍវេបសាយ & CMS",
     expWebCompany: "គម្រោងផ្ទាល់ខ្លួន និងសម្រាប់អតិថិជន",
     expWebDate: "២០២១ - បច្ចុប្បន្ន",

@@ -67,6 +67,21 @@ The platform is designed to offer visitors a seamless, interactive, and visually
 - **📱 Fully Responsive**: Fluid typography and flex/grid layouts optimized across smartphones, tablets, and ultra-wide desktops.
 - **📋 One-Click Copy & Toast Notifications**: Interactive click-to-copy functionality for contact handles, emails, and social handles with real-time feedback toast.
 - **📬 Working Contact Form**: Integrated contact channel with form validation, Formspree API submission, and automatic mailto fallback.
+- **🚀 7+ Live Web Platforms Showcase**: Dedicated interactive experience hub highlighting production web applications with live links, technology badges, and metrics.
+
+---
+
+## 🌐 Featured Live Applications & Production Platforms
+
+| Platform | Category | URL | Stack & Key Capabilities |
+| :--- | :--- | :--- | :--- |
+| **iUseTools** | File Converter & Dev Suite | [iusetools.site](https://www.iusetools.site) | Next.js, React, OCR (JPG to Word), PDF tools, 30+ client-side private utilities |
+| **URLGenZ** | URL Shortener & Link Suite | [urlgenz.site](https://www.urlgenz.site) | Next.js, React, Custom aliases, auto QR generator, UTM analytics, bulk tools |
+| **QRGenZ** | QR Generator & Scanner | [qrgenz.online](https://www.qrgenz.online) | Next.js, React, 12 artistic styled templates, live camera scan, SVG/PNG export |
+| **SnapDown** | HD Media Downloader | [snapdown.online](https://www.snapdown.online/) | JavaScript, Video/audio extraction from YouTube, TikTok, Facebook, IG, X |
+| **Fake-Inbox** | Disposable Email Service | [fake-inbox.com](https://fake-inbox.com) | PHP, Instant ephemeral mailboxes, spam defense, fast online verification |
+| **CamHost** | Telegram Cloud Storage | [camhost.space](https://camhost.space) | Vite, React, Open-source unlimited cloud storage powered by Telegram API |
+| **24hMovie** | Cinema & Streaming Portal | [24hmoive.site](https://24hmoive.site) | Web Streaming, Video player integration, dark cinema UI, responsive catalog |
 
 ---
 
@@ -180,7 +195,7 @@ npm run preview
 | `/about` | **About** | Detailed biography, personal journey, core values, and life timeline |
 | `/education` | **Education** | Academic background at ITC (GIC), coursework, and academic journey |
 | `/skills` | **Skills** | Frontend, backend, programming languages (C++, Java, JS), and creative tools |
-| `/experience` | **Experience** | Video direction, web development history, and collaborative projects |
+| `/experience` | **Experience** | **7+ Live Web Apps** ([iUseTools](https://www.iusetools.site), [URLGenZ](https://www.urlgenz.site), [QRGenZ](https://www.qrgenz.online), [SnapDown](https://www.snapdown.online/), [Fake-Inbox](https://fake-inbox.com), [CamHost](https://camhost.space), [24hMovie](https://24hmoive.site)), film direction & industry roles |
 | `/achievements`| **Achievements**| Verified certifications, competition wins, and recognitions |
 | `/contact` | **Contact** | Direct communication handles (Telegram, Email, Socials) and message form |
 
